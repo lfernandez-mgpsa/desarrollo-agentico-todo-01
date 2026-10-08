@@ -1,0 +1,13 @@
+<h1>Editar tarea</h1>
+
+<form action="/tasks/<%= task.ID %>" method="POST" class="task-form">
+  <input type="hidden" name="authenticity_token" value="<%= authenticity_token %>">
+  <input type="hidden" name="_method" value="PUT">
+  <label for="task-title">Título</label>
+  <div class="task-form-row">
+    <%= partial("tasks/title_field.plush.html") %>
+    <button type="submit" class="button button-primary">Guardar</button>
+    <a class="button" href="/">Cancelar</a>
+  </div>
+  <%= partial("tasks/title_error.plush.html") %>
+</form>

@@ -1,0 +1,9 @@
+<input
+  id="task-title"
+  type="text"
+  name="title"
+  value="<%= task.Title %>"
+  maxlength="200"
+  autocomplete="off"
+  <%= if (errors.HasAny()) { %>aria-invalid="true" aria-describedby="title-error"<% } %>
+>

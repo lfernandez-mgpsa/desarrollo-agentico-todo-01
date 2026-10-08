@@ -1,25 +1,13 @@
 <h1>Tareas</h1>
 
-<form action="/tasks" method="POST" class="new-task">
+<form action="/tasks" method="POST" class="task-form">
   <input type="hidden" name="authenticity_token" value="<%= authenticity_token %>">
   <label for="task-title">Nueva tarea</label>
-  <div class="new-task-row">
-    <input
-      id="task-title"
-      type="text"
-      name="title"
-      value="<%= task.Title %>"
-      maxlength="200"
-      autocomplete="off"
-      <%= if (errors.HasAny()) { %>aria-invalid="true" aria-describedby="title-error"<% } %>
-    >
+  <div class="task-form-row">
+    <%= partial("tasks/title_field.plush.html") %>
     <button type="submit" class="button button-primary">Añadir</button>
   </div>
-  <%= if (errors.HasAny()) { %>
-    <p id="title-error" class="field-error" role="alert">
-      <%= for (msg) in errors.Get("title") { %><%= msg %><% } %>
-    </p>
-  <% } %>
+  <%= partial("tasks/title_error.plush.html") %>
 </form>
 
 <%= if (len(tasks) == 0) { %>
@@ -42,6 +30,9 @@
               <button type="submit" class="button">Completar</button>
             <% } %>
           </form>
+          <%= if (!t.Completed) { %>
+            <a class="button" href="/tasks/<%= t.ID %>/edit">Editar</a>
+          <% } %>
           <form action="/tasks/<%= t.ID %>" method="POST" data-confirm="¿Seguro que quieres eliminar esta tarea?">
             <input type="hidden" name="authenticity_token" value="<%= authenticity_token %>">
             <input type="hidden" name="_method" value="DELETE">

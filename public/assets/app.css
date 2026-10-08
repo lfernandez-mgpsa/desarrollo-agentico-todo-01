@@ -74,8 +74,13 @@ h1 {
   border-color: var(--color-primary);
 }
 
-/* Formulario de nueva tarea */
-.new-task {
+.flash-error {
+  background-color: var(--color-error-background);
+  border-color: var(--color-danger);
+}
+
+/* Formularios de tarea (alta y edición) */
+.task-form {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -83,18 +88,18 @@ h1 {
   margin-bottom: var(--space-l);
 }
 
-.new-task label {
+.task-form label {
   display: block;
   font-weight: 600;
   margin-bottom: var(--space-s);
 }
 
-.new-task-row {
+.task-form-row {
   display: flex;
   gap: var(--space-s);
 }
 
-.new-task input[type="text"] {
+.task-form input[type="text"] {
   flex: 1;
   padding: var(--space-s) var(--space-m);
   font-size: var(--font-size-base);
@@ -122,6 +127,11 @@ h1 {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   cursor: pointer;
+}
+
+a.button {
+  display: inline-block;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -214,7 +224,7 @@ input:focus-visible {
     padding: var(--space-l) var(--space-s);
   }
 
-  .new-task-row {
+  .task-form-row {
     flex-direction: column;
   }
 

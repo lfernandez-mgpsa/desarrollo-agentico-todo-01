@@ -1,0 +1,5 @@
+<%= if (errors.HasAny()) { %>
+  <p id="title-error" class="field-error" role="alert">
+    <%= for (msg) in errors.Get("title") { %><%= msg %><% } %>
+  </p>
+<% } %>
